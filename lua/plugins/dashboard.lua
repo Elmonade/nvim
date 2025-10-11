@@ -10,6 +10,8 @@ return {
     -- Set header
     dashboard.section.header.val = {
       "                                                     ",
+      "                                                     ",
+      "                                                     ",
       "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
       "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
       "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
@@ -21,6 +23,7 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
+      dashboard.button("p", "  Projects", ":Telescope projects <CR>"),
       dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("r", "  Recent files", ":Telescope oldfiles <CR>"),
@@ -31,7 +34,7 @@ return {
 
     -- Set footer
     local function footer()
-      return "⚡ Minimal Neovim"
+      return "⚡ Barely Functional"
     end
 
     dashboard.section.footer.val = footer()

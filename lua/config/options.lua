@@ -37,3 +37,13 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = true
 opt.foldlevel = 99
+
+-- Persistent undo
+opt.undofile = true
+opt.undodir = vim.fn.stdpath("data") .. "/undo"
+
+-- Create undo directory if it doesn't exist
+local undo_dir = vim.fn.stdpath("data") .. "/undo"
+if vim.fn.isdirectory(undo_dir) == 0 then
+  vim.fn.mkdir(undo_dir, "p")
+end
