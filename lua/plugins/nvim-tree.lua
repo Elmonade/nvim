@@ -29,7 +29,7 @@ return {
       renderer = {
         highlight_opened_files = "name", -- highlights just the name without icons
         highlight_git = true,
-        root_folder_label = ":~:s?$?/..?",
+        root_folder_label = false,
         indent_markers = {
           enable = false,
         },
@@ -59,13 +59,6 @@ return {
         ignore = false,
       },
 
-      actions = {
-        open_file = {
-          quit_on_open = false,
-        },
-      },
-
-      -- Close nvim-tree if it's the last window
       actions = {
         open_file = {
           quit_on_open = false,
