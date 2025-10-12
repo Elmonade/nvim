@@ -21,7 +21,8 @@ return {
 			numbers = "ordinal",
 			close_command = "bdelete! %d",
 			indicator = {
-				style = "underline",
+				style = "icon",
+        icon = ">",
 			},
 			modified_icon = "●",
 	  max_name_length = 18,
@@ -34,17 +35,18 @@ return {
 			  filetype = "NvimTree",
 			  text = "",
 			  text_align = "center",
-			  highlight = "Normal",
+			  highlight = false,
 			  separator = true,
 		  },
 	  },
 	  show_duplicate_prefix = true,
 	  persist_buffer_sort = true,
-	  separator_style = { "", "" },
+	  separator_style = {"",""},
 	  color_icons = false,
 	  show_buffer_icons = false,
 	  show_buffer_close_icons = false,
 	  show_close_icon = false,
+    show_indicators = false,
 	  show_tab_indicators = false,
 	  enforce_regular_tabs = false,
 	  always_show_bufferline = false,
@@ -56,14 +58,13 @@ return {
 		  fg = { attribute = "bg", highlight = "Normal" },
 		  bg = { attribute = "bg", highlight = "Normal" },
 	  },
-	  -- Add this new section for offset separator
 	  offset_separator = {
-		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = { attribute = "bg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Function" },
 	  },
 	  -- Inactive buffer
 	  background = {
 		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Comment" },
 	  },
 	  -- Active/selected buffer
 	  buffer_selected = {
@@ -76,6 +77,7 @@ return {
 	  -- Numbers
 	  numbers = {
 		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Comment" },
 	  },
 	  numbers_selected = {
 		  bg = { attribute = "bg", highlight = "Normal" },
@@ -86,8 +88,9 @@ return {
 	  },
 	  -- Indicators
 	  indicator_selected = {
-		  fg = { attribute = "fg", highlight = "Function" },
+		  --fg = { attribute = "fg", highlight = "Function" },
 		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Comment" },
 	  },
 	  indicator_visible = {
 		  fg = { attribute = "fg", highlight = "Normal" },
