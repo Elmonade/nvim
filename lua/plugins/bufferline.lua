@@ -33,7 +33,7 @@ return {
 	  offsets = {
 		  {
 			  filetype = "NvimTree",
-			  text = "",
+			  text = "-_-",
 			  text_align = "center",
 			  highlight = false,
 			  separator = true,
@@ -63,12 +63,13 @@ return {
 	  },
 	  -- Inactive buffer
 	  background = {
-		  bg = { attribute = "bg", highlight = "Normal" },
-		  fg = { attribute = "bg", highlight = "Comment" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#555555"
 	  },
 	  -- Active/selected buffer
 	  buffer_selected = {
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#eeeeee"
 	  },
 	  -- Visible buffer
 	  buffer_visible = {
@@ -76,24 +77,23 @@ return {
 	  },
 	  -- Numbers
 	  numbers = {
-		  bg = { attribute = "bg", highlight = "Normal" },
-		  fg = { attribute = "bg", highlight = "Comment" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#555555"
 	  },
 	  numbers_selected = {
-		  bg = { attribute = "bg", highlight = "Normal" },
-		  bold = true,
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#eeeeee"
 	  },
 	  numbers_visible = {
 		  bg = { attribute = "bg", highlight = "Normal" },
 	  },
 	  -- Indicators
 	  indicator_selected = {
-		  --fg = { attribute = "fg", highlight = "Function" },
-		  bg = { attribute = "bg", highlight = "Normal" },
-		  fg = { attribute = "bg", highlight = "Comment" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#ff0055"
 	  },
 	  indicator_visible = {
-		  fg = { attribute = "fg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Function" },
 		  bg = { attribute = "bg", highlight = "Normal" },
 	  },
 	  -- Modified indicator
