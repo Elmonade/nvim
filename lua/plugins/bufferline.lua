@@ -59,7 +59,8 @@ return {
 		  bg = { attribute = "bg", highlight = "Normal" },
 	  },
 	  offset_separator = {
-      bg = { attribute = "bg", highlight = "Function" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = { attribute = "bg", highlight = "Normal" },
 	  },
 	  -- Inactive buffer
 	  background = {
@@ -71,9 +72,10 @@ return {
 		  fg = { attribute = "bg", highlight = "Normal" },
 		  bg = "#eeeeee"
 	  },
-	  -- Visible buffer
+	  -- Visible buffer: Currently selected by focus is outside the buffer window.
 	  buffer_visible = {
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#eeeeee"
 	  },
 	  -- Numbers
 	  numbers = {
@@ -85,7 +87,8 @@ return {
 		  bg = "#eeeeee"
 	  },
 	  numbers_visible = {
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#eeeeee"
 	  },
 	  -- Indicators
 	  indicator_selected = {
@@ -93,8 +96,8 @@ return {
 		  bg = "#ff0055"
 	  },
 	  indicator_visible = {
-		  fg = { attribute = "bg", highlight = "Function" },
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#ff0055"
 	  },
 	  -- Modified indicator
 	  modified = {
