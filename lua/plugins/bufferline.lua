@@ -6,7 +6,8 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	event = "VeryLazy",
 	keys = {
-		{ ";j", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" }, { ";k", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous Buffer" },
+		{ ";j", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+		{ ";k", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous Buffer" },
 		{ ";c", "<cmd>bdelete<cr>", desc = "Close Buffer" },
 		{ ";1", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Go to Buffer 1" },
 		{ ";2", "<cmd>BufferLineGoToBuffer 2<cr>", desc = "Go to Buffer 2" },
@@ -20,9 +21,12 @@ return {
 			themable = true,
 			numbers = "ordinal",
 			close_command = "bdelete! %d",
+			--name_formatter = function(buf)
+				--return string.format("%-30s", buf.name)
+			--end,
 			indicator = {
 				style = "icon",
-        icon = ">",
+				icon = "  >",
 			},
 			modified_icon = "●",
 	  max_name_length = 18,
@@ -35,18 +39,18 @@ return {
 			  filetype = "NvimTree",
 			  text = "-_-",
 			  text_align = "center",
-			  highlight = false,
+			  highlight = "NvimTreeOffsetText",
 			  separator = true,
 		  },
 	  },
 	  show_duplicate_prefix = true,
 	  persist_buffer_sort = true,
-	  separator_style = {"",""},
+	  separator_style = { "", "" },
 	  color_icons = false,
 	  show_buffer_icons = false,
 	  show_buffer_close_icons = false,
 	  show_close_icon = false,
-    show_indicators = false,
+	  show_indicators = false,
 	  show_tab_indicators = false,
 	  enforce_regular_tabs = false,
 	  always_show_bufferline = false,
@@ -65,49 +69,52 @@ return {
 	  -- Inactive buffer
 	  background = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#555555"
+		  bg = "#555555",
 	  },
 	  -- Active/selected buffer
 	  buffer_selected = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#eeeeee"
+		  bg = "#eeeeee",
 	  },
 	  -- Visible buffer: Currently selected by focus is outside the buffer window.
 	  buffer_visible = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#eeeeee"
+		  bg = "#eeeeee",
 	  },
 	  -- Numbers
 	  numbers = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#555555"
+		  bg = "#555555",
 	  },
 	  numbers_selected = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#eeeeee"
+		  bg = "#eeeeee",
 	  },
 	  numbers_visible = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#eeeeee"
+		  bg = "#eeeeee",
 	  },
 	  -- Indicators
 	  indicator_selected = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#ff0055"
+		  bg = "#ff0055",
 	  },
 	  indicator_visible = {
 		  fg = { attribute = "bg", highlight = "Normal" },
-		  bg = "#ff0055"
+		  bg = "#ff0055",
 	  },
 	  -- Modified indicator
 	  modified = {
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#00ff55",
 	  },
 	  modified_selected = {
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#00ff55",
 	  },
 	  modified_visible = {
-		  bg = { attribute = "bg", highlight = "Normal" },
+		  fg = { attribute = "bg", highlight = "Normal" },
+		  bg = "#00ff55",
 	  },
 	  -- Duplicates
 	  duplicate = {
@@ -143,6 +150,31 @@ return {
 	  tab_close = {
 		  bg = { attribute = "bg", highlight = "Normal" },
 	  },
-  },  },  config = function(_, opts)
-  require("bufferline").setup(opts)  end,
+  },
+  },
+  config = function(_, opts)
+    -- Create custom highlight group for NvimTree offset BEFORE setup
+    local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+    if not normal_bg then
+      normal_bg = 0x0f1419  -- ayu dark background as fallback
+    end
+
+    vim.api.nvim_set_hl(0, "NvimTreeOffsetText", {
+      fg = 0xcbccc6,  -- Light gray text (ayu default foreground)
+      bg = normal_bg
+    })
+
+    require("bufferline").setup(opts)
+
+    -- Also set after colorscheme changes
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      callback = function()
+        local bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg or 0x0f1419
+        vim.api.nvim_set_hl(0, "NvimTreeOffsetText", {
+          fg = 0xcbccc6,
+          bg = bg
+        })
+      end
+    })
+  end,
 }

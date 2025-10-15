@@ -66,6 +66,26 @@ return {
       },
     })
 
+    -- Set NvimTree highlights to match theme
+    local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg or "#0A0E14"
+
+    vim.api.nvim_set_hl(0, "NvimTreeStatusLine", {
+      fg = "#CBCCC6",
+      bg = normal_bg
+    })
+    vim.api.nvim_set_hl(0, "NvimTreeStatusLineNC", {
+      fg = "#CBCCC6",
+      bg = normal_bg
+    })
+    vim.api.nvim_set_hl(0, "NvimTreeWinBar", {
+      fg = "#CBCCC6",
+      bg = normal_bg
+    })
+    vim.api.nvim_set_hl(0, "NvimTreeWinBarNC", {
+      fg = "#CBCCC6",
+      bg = normal_bg
+    })
+
     -- Auto-close if it's the last window
     vim.api.nvim_create_autocmd("QuitPre", {
       callback = function()
