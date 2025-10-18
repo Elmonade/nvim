@@ -19,25 +19,16 @@ return {
 		})
 
 		-- Configure Claude buffers to behave like terminal windows
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "claude",
+		vim.api.nvim_create_autocmd("BufEnter", {
+			pattern = "claude-code*",
 			callback = function()
-				-- Map ESC to exit insert mode (like terminal mode)
-				vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-				vim.keymap.set("t", "<C-l>", "<C-l>", { desc = "Clean the terminal window like a sane person." })
+				local opts = { buffer = true, noremap = true, silent = true }
+
+				-- Use jk or Ctrl-i to exit terminal/insert mode (Escape is used by Claude for interrupt/rewind)
+				-- vim.keymap.set("t", "<C-i>", [[<C-\><C-n>]], vim.tbl_extend("force", opts, { desc = "Exit terminal mode" }))
 
 				-- Start in insert mode when entering the buffer
 				vim.cmd("startinsert")
-			end,
-		})
-
-		-- Auto-enter insert mode when entering Claude buffer
-		vim.api.nvim_create_autocmd("BufEnter", {
-			pattern = "*",
-			callback = function()
-				if vim.bo.filetype == "claude" then
-					vim.cmd("startinsert")
-				end
 			end,
 		})
 	end,
