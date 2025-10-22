@@ -47,9 +47,10 @@ return {
     -- Send config to alpha
     alpha.setup(dashboard.opts)
 
-    -- Disable folding on alpha buffer and set up keybindings
+    -- Disable folding on alpha buffer, hide statusline, and set up keybindings
     vim.cmd([[
-      autocmd FileType alpha setlocal nofoldenable
+      autocmd FileType alpha setlocal nofoldenable laststatus=0
+      autocmd BufUnload <buffer> setlocal laststatus=3
       autocmd FileType alpha nnoremap <buffer> <silent> p :Telescope projects<CR>
       autocmd FileType alpha nnoremap <buffer> <silent> f :Telescope find_files<CR>
       autocmd FileType alpha nnoremap <buffer> <silent> n :ene <BAR> startinsert<CR>

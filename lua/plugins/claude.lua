@@ -25,7 +25,7 @@ return {
 				local opts = { buffer = true, noremap = true, silent = true }
 
 				-- Use jk or Ctrl-i to exit terminal/insert mode (Escape is used by Claude for interrupt/rewind)
-				-- vim.keymap.set("t", "<C-i>", [[<C-\><C-n>]], vim.tbl_extend("force", opts, { desc = "Exit terminal mode" }))
+				vim.keymap.set("t", "<C-j>", [[<C-\><C-n>]], vim.tbl_extend("force", opts, { desc = "Exit terminal mode" }))
 
 				-- Start in insert mode when entering the buffer
 				vim.cmd("startinsert")

@@ -36,7 +36,7 @@ return {
 		-- Terminal keymaps
 		function _G.set_terminal_keymaps()
 			local opts = { buffer = 0 }
-			vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+			vim.keymap.set("t", "<C-j>", [[<C-\><C-n>]], opts)
 			vim.keymap.set("t", "<C-l>", "<C-l>", { desc = "Clean the terminal window like a sane person." })
 		end
 
