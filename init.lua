@@ -25,3 +25,6 @@ vim.api.nvim_set_hl(0, "NvimTreeNormal", {
 vim.api.nvim_set_hl(0, "NvimTreeNormalNC", {
     bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
 })
+
+-- Auto close brackets
+require("autoclose").setup()
