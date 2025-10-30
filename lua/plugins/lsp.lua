@@ -43,8 +43,10 @@ return {
           local opts = { buffer = args.buf, silent = true }
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to Definition" }))
           vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover Documentation" }))
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to Implementation" }))
-          vim.keymap.set("n", "gl", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Show Diagnostic" }))
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation,
+            vim.tbl_extend("force", opts, { desc = "Go to Implementation" }))
+          vim.keymap.set("n", "gl", vim.diagnostic.open_float,
+            vim.tbl_extend("force", opts, { desc = "Show Diagnostic" }))
           vim.keymap.set("n", ";rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename Symbol" }))
           vim.keymap.set("n", ";la", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
           vim.keymap.set("n", ";lf", vim.lsp.buf.format, vim.tbl_extend("force", opts, { desc = "Format Buffer" }))
@@ -61,19 +63,19 @@ return {
           vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
         end,
       })
-      
+
       -- Apply immediately
       vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
       vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
-      
+
       -- Get LSP capabilities for completion
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      
+
       -- Setup each LSP server using vim.lsp.config
       vim.lsp.config("rust_analyzer", {
         capabilities = capabilities,
       })
-      
+
       vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         settings = {
@@ -84,15 +86,15 @@ return {
           },
         },
       })
-      
+
       vim.lsp.config("pyright", {
         capabilities = capabilities,
       })
-      
+
       vim.lsp.config("ts_ls", {
         capabilities = capabilities,
       })
-      
+
       -- Enable the LSP servers for appropriate filetypes
       vim.lsp.enable("rust_analyzer")
       vim.lsp.enable("lua_ls")
@@ -113,7 +115,7 @@ return {
     },
     config = function()
       local cmp = require("cmp")
-      
+
       cmp.setup({
         snippet = {
           expand = function(args)
